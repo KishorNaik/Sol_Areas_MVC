@@ -1,0 +1,38 @@
+﻿Step 1:
+Create a following folder in main solution.
+Areas
+
+Step 2:
+Right click on Areas -> Select Add -> Select Area from Menu Context.
+
+Step 3:
+Add a Area in the Solution.
+
+Step 4:
+Go to StartUp.cs file and in Configure method add the following code before UseAuthorization Method
+
+app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                name: "areas",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+            );
+
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+Step 5:
+Go to specified area folder (Admin) -> go to View folder.
+    5.1 Add Razor View Start.
+    5.2 Add Razor Import Start. and Import @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+Step 6:
+Create a controller in Admin(Area) folder.
+
+Step 7:
+Add Area Attribute in Controller Class
+[Area(areaName)]
+    
+
